@@ -1,0 +1,47 @@
+<html>
+
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  </head>
+	<center>
+	<body>
+
+
+ <form action={{ url_for('results') }} method="post" class="form-inline" >
+  Search:<input type="keyword" id="keyword" name="keyword" class="form-control" size="50" placeholder="Enter the URL">
+    <button type="button" class="glyphicon glyphicon-search btn btn-danger">Search</button>
+  </form>
+<div class="col-sm-4"> 
+      <div class="panel panel-danger">
+        <div class="panel-heading"></div>
+        <div class="panel-body">
+
+<b>Genral Info</b>	
+{{gog}}<br>
+<b>Info shown at social media ::<br> </b>
+		{% for x,y in data.items() %}
+		
+		{% if x == "image" %}
+			<img src={{y}} height="48" width="120"/>
+		{% elif x == "description" %}
+			<b>{{y}}</b>
+		{% elif x == "site_name" %}
+			<b>{{y}}</b>
+		{% elif x == "video:url" %}
+			<video width="320" height="240" controls>
+			  <source src={{y}} type="video/mp4">
+			</video>
+		
+		{% endif %}
+ 	
+		
+	{% endfor %} 
+</div>
+</div>
+</div>
+	<center>
+</body>	
+</html>
